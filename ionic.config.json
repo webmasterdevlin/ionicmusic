@@ -1,0 +1,8 @@
+{
+  "name": "themusic",
+  "app_id": "95349e68",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
