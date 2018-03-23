@@ -1,3 +1,4 @@
+import { MusicProvider } from './../../providers/music/music';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -9,8 +10,12 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
+  public favoriteSongs = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public musicProvider: MusicProvider) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
@@ -26,6 +31,10 @@ export class ListPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+  }
+
+  ionViewDidLoad() {
+    this.favoriteSongs = this.musicProvider.getFavorites();
   }
 
   itemTapped(event, item) {
